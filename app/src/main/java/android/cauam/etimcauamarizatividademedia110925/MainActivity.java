@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
              private TextView resultado;
              private String nome;
 
+             private int numeroFaltas2 = Integer.parseInt(numeroFaltas.getText().toString());
 
 
     @Override
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(media >7){
-            if(numeroFaltas < 20){
+            if(numeroFaltas2 < 20){
                 resultado.setTextColor(Color.parseColor("#438845"));
                 resultado.setText("Aluno aprovado com media: " + media);
             }else{
@@ -67,23 +68,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void validaCampos() {
-        if(TextUtils.isEmpty(nota1.getText())){
-            nota1.setError("Este campo nao pode estar vazio");
-
-        }
-        else if(TextUtils.isEmpty(nota2.getText())){
-            nota1.setError("Este campo nao pode estar vazio");
-
-        }
-        else if(TextUtils.isEmpty(nota3.getText())){
-            nota1.setError("Este campo nao pode estar vazio");
-
-        }
-        else if(TextUtils.isEmpty(nota4.getText())){
-            nota1.setError("Este campo nao pode estar vazio");
-
-        }
+    private boolean validaCampos(){
+        return nota1.getText().toString().isEmpty()
+                && nota2.getText().toString().isEmpty()
+                && nota3.getText().toString().isEmpty()
+                && nota4.getText().toString().isEmpty();
     }
 
     private void initComponents() {
